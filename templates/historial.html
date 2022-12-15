@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Hola</h1>
+        <table border="1">
+            <tr>
+                <th>Description</th>
+                <th>Mount</th>
+                <th>Date</th>
+            </tr>
+            {% for row in data %}
+            <tr>
+                <th>{{row[Description]}}</th>
+                <th>{{row[Mount]}}</th>
+                <th>{{row[Date]}}</th>
+            </tr>
+        </table>
+    </body>
+</html>
