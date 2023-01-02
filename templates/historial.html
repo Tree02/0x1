@@ -4,16 +4,17 @@
         <h1>Hola</h1>
         <table border="1">
             <tr>
+                <th>Id</th>
                 <th>Description</th>
                 <th>Mount</th>
-                <th>Date</th>
             </tr>
-            {% for row in data %}
+            {% for row in historial %}
             <tr>
-                <th>{{row[Description]}}</th>
-                <th>{{row[Mount]}}</th>
-                <th>{{row[Date]}}</th>
+                <th>{{row.description}}</th>
+                <th>{{row.mount}}</th>
+                <th><input type="submit" value="eliminar" name="elimId"></th>
             </tr>
+            {% endfor %}
         </table>
     </body>
 </html>

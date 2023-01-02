@@ -1,0 +1,43 @@
+import sqlalchemy
+from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship
+
+engine = sqlalchemy.create_engine("sqlite:///database.db")
+
+base = declarative_base()
+
+class Historial(base):
+    __tablename__ = "historial"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    description = Column(String)
+    amount = Column(Float)
+
+    def __repr__(self):
+        return self
+
+def insert(descriptionIn, amountIn):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    a = Historial(description=descriptionIn, amount=amountIn)
+    
+    session.add(a)
+    session.commit()
+
+#Delete id - History // client select, filter id first delete
+"""
+def deleteId(id):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    b = session.query(Historial).filter(Historial.id == id).first()
+
+    session.delete(b)
+    session.commit()
+"""
+
+if __name__ == "__main__":
+    base.metadata.create_all(engine)
+

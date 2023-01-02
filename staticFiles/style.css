@@ -7,5 +7,15 @@
 }
 
 form {
+    display: flex;
     margin: 5px 1px;
+    flex-direction: column;
+}
+
+.description{
+    
+}
+
+.monto{
+    
 }
