@@ -3,6 +3,8 @@ from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
+from flask import jsonify
+
 engine = sqlalchemy.create_engine("sqlite:///database.db")
 
 base = declarative_base()
@@ -16,6 +18,12 @@ class Historial(base):
 
     def __repr__(self):
         return self
+    def jsonify(self):
+        return ({
+            'id' : self.id,
+            'description' : self.description,
+            'amount' : self.amount
+        })
 
 def insert(descriptionIn, amountIn):
     Session = sessionmaker(bind=engine)
@@ -27,7 +35,6 @@ def insert(descriptionIn, amountIn):
     session.commit()
 
 #Delete id - History // client select, filter id first delete
-"""
 def deleteId(id):
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -36,7 +43,6 @@ def deleteId(id):
 
     session.delete(b)
     session.commit()
-"""
 
 if __name__ == "__main__":
     base.metadata.create_all(engine)
