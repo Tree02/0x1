@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 import traceback
 from base import insert, sessionmaker, engine, Historial, deleteId
 import sqlalchemy
@@ -27,7 +27,7 @@ def nuevo():
 
 
 # History, select delete, filter date = timestamps, modify description
-@app.route("/historial.html", methods=['GET'])
+@app.route("/historial", methods=['GET'])
 def history():
     if request.method == 'GET':
         session = Session()
@@ -36,12 +36,11 @@ def history():
 
 
 #Delete id - History // input client
-@app.route("/delete/<id>", methods=['POST'])
+@app.route("/delete/<id>", methods=['GET', 'POST'])
 def elimId(id):
     if request.method == 'POST':
-        session = Session()
         deleteId(id=id)
-        return render_template('historial.html')
+        return redirect('/historial')
 
 if __name__ == '__main__':
     app.run(host="192.168.100.122", port=5000)

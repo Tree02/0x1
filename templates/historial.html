@@ -12,16 +12,16 @@
                 <th>Mount</th>
                 <th></th>
             </tr>
-            <form action="/delete/id" >
             {% for row in data %}
-                <tr>
-                    <th name="m">{{row.id}}</th>
-                    <th>{{row.description}}</th>
-                    <th>{{row.amount}}</th>
-                    <th><input type="submit" value="eliminar"></th>
-                </tr>
+                <form action="/delete/{{row.id}}" method="post">
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.description}}</td>
+                        <td>{{row.amount}}</td>
+                        <td><input type="submit" value="eliminar"></td>
+                    </tr>
+                </form>
             {% endfor %}
-            </form>
         </table>
     </body>
 </html>
