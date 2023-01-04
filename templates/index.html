@@ -6,16 +6,16 @@
 </head>
 <body>
     <div class="container">
-        <form action="/historial">
-            <input type="submit" value="History">
-        </form>
         <form action="nuevo" method="post" id="form-cantidad">        
-            <label>Amount</label>
+            <label class="amount-title">Amount</label>
             <input type="number" name="aam">        
-            <label>Description</label>
+            <label class="description-title">Description</label>
             <input type="text" name="dde">
             <input type="submit" value="submit">
-        </form>        
+        </form>    
+        <form action="/historial">
+            <input type="submit" value="History">
+        </form>    
     </div>
 </body>
 </html>

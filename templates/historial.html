@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <body>
+    <head>
+        <title>history</title>
+        <link rel="stylesheet" href="/staticFiles/style.css">
+        <link href='https://css.gg/trash.css' rel='stylesheet'>
+        <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
+    </head>
+<body>
+    <div class="history-container">
         <h1>Story</h1>
         <form action="/">
-            <input type="submit" value="back">
+            <input type="submit" value="back"><i class="gg-arrow-left"></i>
         </form>
         <table border="1">
             <tr>
                 <th>id</th>
                 <th>Description</th>
                 <th>Mount</th>
-                <th></th>
+                <th>Delete</th>
             </tr>
             {% for row in data %}
-                <form action="/delete/{{row.id}}" method="post">
-                    <tr>
-                        <td>{{row.id}}</td>
-                        <td>{{row.description}}</td>
-                        <td>{{row.amount}}</td>
-                        <td><input type="submit" value="eliminar"></td>
-                    </tr>
-                </form>
+            <form action="/delete/{{row.id}}" method="post">
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td>{{row.description}}</td>
+                    <td>{{row.amount}}</td>
+                    <td><input type="submit" value="eliminar"></td>
+                </tr>
+            </form>
             {% endfor %}
         </table>
-    </body>
+    </div>
+</body>
+
 </html>
