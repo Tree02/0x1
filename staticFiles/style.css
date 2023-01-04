@@ -1,13 +1,112 @@
-.container{
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f2f2f2;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    place-items: center;
     display: flex;
+    justify-content: center;
+}
+
+
+.container{
     width: 40%;
-    align-items: center;
-    flex-direction: column;
-    border: 2px solid black;
+    border: 1px solid rgb(231, 227, 227);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
 }
 
 form {
     display: flex;
-    margin: 5px 1px;
     flex-direction: column;
+    position: relative;
+}
+
+form input {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid rgb(231, 227, 227);
+    border-radius: 5px;
+    outline: none;
+}
+
+form input[type="submit"] {
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: rgb(210, 208, 208);
+    outline: 1px solid rgb(151, 146, 146);
+}
+form label {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.history-container {
+    width: 40%;
+    border: 1px solid rgb(231, 227, 227);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+.history-container h1 {
+    text-align: center;
+}
+
+.history-container > form{
+    margin-right: 25rem;
+    width: 30%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+}
+table th, table td {
+    border: 1px solid rgb(231, 227, 227);
+    padding: 10px;
+}
+
+table th {
+    background-color: rgb(231, 227, 227);
+}
+
+table tr:hover {
+    background-color:  rgb(210, 208, 208);;
+}
+
+table tr td input[type='submit'] {
+    background-color: transparent;
+    cursor: pointer;
+    color: red;
+    border: none;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+}
+.gg-trash{
+    position: absolute;
+    display: block;
+    z-index: 100;
+    left: -2.5rem;
+    top: -1rem;
+}
+.gg-arrow-left{
+    display: block;
+    position: absolute;
+    margin-top: -2.5rem;
+    margin-left: 2rem;
+    z-index: 100;
+    margin-bottom: 2.5rem;
 }
