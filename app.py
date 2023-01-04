@@ -19,10 +19,9 @@ def index():
 @app.route("/nuevo", methods=['POST'])
 def nuevo():
     if request.method == 'POST':
-        m = request.form.get('aam')
-        d = str(request.form.get('dde'))
+        m = request.form.get('aam')#amount
+        d = str(request.form.get('dde'))#description
         insert(d, m)
-    
         return render_template('index.html')
 
 

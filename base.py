@@ -1,5 +1,6 @@
 import sqlalchemy
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String, Float, DateTime, TIMESTAMP, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 
@@ -15,6 +16,7 @@ class Historial(base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     description = Column(String)
     amount = Column(Float)
+    date = Column(DateTime(timezone=True), server_default=func.now())
 
     def __repr__(self):
         return self
@@ -22,7 +24,8 @@ class Historial(base):
         return ({
             'id' : self.id,
             'description' : self.description,
-            'amount' : self.amount
+            'amount' : self.amount,
+            'date' : self.date
         })
 
 def insert(descriptionIn, amountIn):

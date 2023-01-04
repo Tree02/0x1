@@ -17,6 +17,7 @@
                 <th>id</th>
                 <th>Description</th>
                 <th>Mount</th>
+                <th>Date</th>
                 <th>Delete</th>
             </tr>
             {% for row in data %}
@@ -25,6 +26,7 @@
                     <td>{{row.id}}</td>
                     <td>{{row.description}}</td>
                     <td>{{row.amount}}</td>
+                    <td>{{row.date}}</td>
                     <td class="delettt"><input type="submit" value="eliminar"></td>
                 </tr>
             </form>
