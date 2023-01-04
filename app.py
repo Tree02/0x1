@@ -43,4 +43,4 @@ def elimId(id):
         return redirect('/historial')
 
 if __name__ == '__main__':
-    app.run(host="192.168.100.122", port=5000)
+    app.run(host="192.168.0.3", port=5000)
