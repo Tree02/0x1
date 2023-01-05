@@ -65,7 +65,7 @@ form label {
 }
 
 .history-container {
-    width: 40%;
+    width: 60%;
     border: 1px solid rgb(231, 227, 227);
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -82,14 +82,21 @@ form label {
     width: 30%;
 }
 
+.descriii {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     position: relative;
+
 }
 table th, table td {
     border: 1px solid rgb(231, 227, 227);
     padding: 10px;
+    max-width: 200px;
 }
 
 table th {
@@ -107,7 +114,6 @@ table tr td input[type='submit'] {
     border: none;
     font-weight: bold;
     display: block;
-    width: 100%;
 }
 
 .delettt{

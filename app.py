@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, request, redirect
 import traceback
 from base import insert, sessionmaker, engine, Historial, deleteId
-import sqlalchemy
 
 app = Flask(__name__, static_folder='staticFiles', template_folder='templates')
 
@@ -20,7 +19,7 @@ def index():
 def nuevo():
     if request.method == 'POST':
         m = request.form.get('aam')#amount
-        d = str(request.form.get('dde'))#description
+        d = str(request.form.get('dde'))#description     
         insert(d, m)
         return render_template('index.html')
 
@@ -42,4 +41,4 @@ def elimId(id):
         return redirect('/historial')
 
 if __name__ == '__main__':
-    app.run(host="192.168.100.2", port=5000)
+    app.run(host="192.168.100.46", port=5000)
