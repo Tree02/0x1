@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+.body-login{
+    background: linear-gradient(-45deg, #f5825f, #ee3179, #5bbfe3, #4ee0be);
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    place-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 .body-history{
     background-color: #f2f2f2;
     font-family: 'Roboto', sans-serif;
@@ -27,7 +36,18 @@
 
 
 .container{
+    margin: 0 4vh;
     width: 40%;
+    border: 1px solid rgb(231, 227, 227);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    background-color: white;
+}
+
+.container-register{
+    margin: 0 4vh;
+    width: 25%;
     border: 1px solid rgb(231, 227, 227);
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);

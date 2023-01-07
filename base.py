@@ -3,6 +3,7 @@ from sqlalchemy.sql import func
 from sqlalchemy import Column, Integer, String, Float, DateTime, TIMESTAMP, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
+import datetime
 
 from flask import jsonify
 
@@ -27,6 +28,22 @@ class Historial(base):
             'amount' : self.amount,
             'date' : self.date
         })
+
+"""
+
+Table accounts is the register for clients inputs
+
+class Login(base):
+    __tablename__ = "accounts"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, nulleable=False)
+    password = Column(String, nulleable=False)
+    email = Column(String, nulleable=False)
+
+    def __repr__(self):
+        return(self)
+"""
 
 def insert(descriptionIn, amountIn):
     Session = sessionmaker(bind=engine)

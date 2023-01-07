@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/staticFiles/style.css">
         <link href='https://css.gg/trash.css' rel='stylesheet'>
         <link href='https://css.gg/arrow-left.css' rel='stylesheet'>
+        <script src="../scripts/history.js"></script>
     </head>
 <body class="body-history">
     <div class="history-container">
@@ -25,8 +26,8 @@
                 <tr>
                     <td>{{row.id}}</td>
                     <td class="descriii">{{row.description}}</td>
-                    <td>{{row.amount}}</td>
-                    <td>{{row.date}}</td>
+                    <td>$ {{row.amount}}</td>
+                    <td>{{row.date.strftime('%d %b, %Y')}}</td>
                     <td class="delettt"><input type="submit" value="eliminar"></td>
                 </tr>
             </form>
