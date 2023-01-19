@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify, request, redirect
+from flask import Flask, render_template, jsonify, request
 import traceback
-from base import insert, sessionmaker, engine, Historial, deleteId
+from base import insertP, insertC, sessionmaker, engine
 from sqlalchemy.sql import func
 
 app = Flask(__name__, static_folder='staticFiles', template_folder='templates')
@@ -15,39 +15,58 @@ def index():
         return jsonify({'trace': traceback.format_exc()}) 
 
 """
-
 Function /register - email/username/password
 
 @app.route("/register")
 def register():
 """
 
-#Insert data client
-@app.route("/nuevo", methods=['POST'])
-def nuevo():
+@app.route("/postulante")
+def postulante():
+    try:
+        return render_template('postulante.html')
+    except:
+        return print('error')
+
+@app.route("/cliente")
+def cliente():
+    try:
+        return render_template('cliente.html')
+    except:
+        return print('error')
+
+#Insert data postulante
+@app.route("/nuevoPos", methods=['GET','POST'])
+def nuevoPos():
     if request.method == 'POST':
-        m = request.form.get('aam')#amount
-        d = str(request.form.get('dde'))#description     
-        insert(d, m)
+        n = str(request.form.get('name')).capitalize()#amount
+        l = str(request.form.get('lastName')).capitalize()#description     
+        e = str(request.form.get('email'))
+        insertP(n, l, e)
 
-        return render_template('index.html')
+        print('DATO SUBIDO (POSTULANTE)')
+        return render_template('postulante.html')
+    else:
+        print('ERROR')
+        return jsonify({'trace': traceback.format_exc()})
+
+#Insert data cliente
+@app.route("/nuevoCli", methods=['GET','POST'])
+def nuevoCli():
+    if request.method == 'POST':            ##    CLIENT
+        c = str(request.form.get('company')).capitalize()#company
+        r = str(request.form.get('representative')).capitalize()#name representate
+        e = str(request.form.get('email'))
+        p = request.form.get('phone')#phone number
+        insertC(c, r, e, p)
+
+        print('DATO SUBIDO (CLIENTE)')
+        return render_template('cliente.html')
+    else:
+        print('ERROR')
+        return jsonify({'trace': traceback.format_exc()})
 
 
-# History, select delete, filter date = timestamps, modify description
-@app.route("/historial", methods=['GET'])
-def history():
-    if request.method == 'GET':
-        session = Session()
-        data = session.query(Historial).all()
-        return render_template('historial.html', data=data)
-
-
-#Delete id - History // input client
-@app.route("/delete/<id>", methods=['GET', 'POST'])
-def elimId(id):
-    if request.method == 'POST':
-        deleteId(id=id)
-        return redirect('/historial')
 
 if __name__ == '__main__':
-    app.run(host="192.168.100.122", port=5000)
+    app.run(debug=True)

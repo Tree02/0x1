@@ -1,9 +1,9 @@
 import sqlalchemy
+
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.sql import func
-from sqlalchemy import Column, Integer, String, Float, DateTime, TIMESTAMP, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-import datetime
 
 from flask import jsonify
 
@@ -11,13 +11,13 @@ engine = sqlalchemy.create_engine("sqlite:///database.db")
 
 base = declarative_base()
 
-class Historial(base):
-    __tablename__ = "historial"
+class Users(base):
+    __tablename__ = "Postulantes"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    description = Column(String)
-    amount = Column(Float)
-    date = Column(DateTime(timezone=True), server_default=func.now())
+    name = Column(String)
+    lastName = Column(String)
+    email = Column(String)
 
     def __repr__(self):
         return self
@@ -29,41 +29,35 @@ class Historial(base):
             'date' : self.date
         })
 
-"""
-
-Table accounts is the register for clients inputs
-
-class Login(base):
-    __tablename__ = "accounts"
+class Clients(base):
+    __tablename__ = "Clientes"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String, nulleable=False)
-    password = Column(String, nulleable=False)
-    email = Column(String, nulleable=False)
+    company = Column(String)
+    representative = Column(String)
+    email = Column(String)
+    phone = Column(Integer)
 
     def __repr__(self):
-        return(self)
-"""
+        return self
 
-def insert(descriptionIn, amountIn):
+def insertP(n, l, e):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    a = Historial(description=descriptionIn, amount=amountIn)
+    a = Users(name=n, lastName=l, email=e)
     
     session.add(a)
     session.commit()
 
-#Delete id - History // client select, filter id first delete
-def deleteId(id):
+def insertC(c, r, e, p):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    b = session.query(Historial).filter(Historial.id == id).first()
-
-    session.delete(b)
+    a = Clients(company=c, representative=r, email=e, phone=p)
+    
+    session.add(a)
     session.commit()
 
 if __name__ == "__main__":
     base.metadata.create_all(engine)
-
